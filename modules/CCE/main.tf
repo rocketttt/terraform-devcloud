@@ -12,7 +12,7 @@ resource "huaweicloud_vpc_eip" "cce_node_eip" {
     type = "5_bgp"
   }
   bandwidth {
-    name        = "devcloud-demo-cce-node-eip-lcy"
+    name        = "devcloud-demo-cce-node-eip-terraform"
     size        = 10
     share_type  = "PER"
     charge_mode = "traffic"
@@ -22,7 +22,7 @@ resource "huaweicloud_vpc_eip" "cce_node_eip" {
 data "huaweicloud_availability_zones" "myaz" {}
 
 resource "huaweicloud_cce_cluster" "mycce" {
-  name                   = format("%s-cce-cluster-lcy", var.name_prefix)
+  name                   = format("%s-cce-cluster-terraform", var.name_prefix)
   flavor_id              = "cce.s1.small"
   vpc_id                 = var.vpc_id
   subnet_id              = var.subnet_id
@@ -32,7 +32,7 @@ resource "huaweicloud_cce_cluster" "mycce" {
 
 resource "huaweicloud_cce_node" "mynode" {
   cluster_id        = huaweicloud_cce_cluster.mycce.id
-  name              = format("%s-cce-node-lcy", var.name_prefix)
+  name              = format("%s-cce-node-terraform", var.name_prefix)
   flavor_id         = "c7n.xlarge.4"
   availability_zone = data.huaweicloud_availability_zones.myaz.names[0]
   password          = var.admin_password

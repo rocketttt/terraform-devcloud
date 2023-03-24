@@ -8,14 +8,14 @@ terraform {
 }
 
 resource "huaweicloud_vpc" "test" {
-  name = format("%s-lcy", var.name_prefix)
+  name = format("%s-terraform", var.name_prefix)
   cidr = var.vpc_cidr
 }
 
 resource "huaweicloud_vpc_subnet" "test" {
   vpc_id = huaweicloud_vpc.test.id
 
-  name        = format("%s-subnet-lcy", var.name_prefix)
+  name        = format("%s-subnet-terraform", var.name_prefix)
   cidr        = cidrsubnet(var.vpc_cidr, 4, 1)
   gateway_ip  = cidrhost(cidrsubnet(var.vpc_cidr, 4, 1), 1)
   ipv6_enable = true
@@ -27,7 +27,7 @@ resource "huaweicloud_vpc_subnet" "test" {
 resource "huaweicloud_vpc_subnet" "eni_subnet" {
   vpc_id = huaweicloud_vpc.test.id
 
-  name        = format("%s-eni-subnet-lcy", var.name_prefix)
+  name        = format("%s-eni-subnet-terraform", var.name_prefix)
   cidr        = cidrsubnet(var.vpc_cidr, 8, 2)
   gateway_ip  = cidrhost(cidrsubnet(var.vpc_cidr, 8, 2), 1)
   ipv6_enable = true
@@ -35,7 +35,7 @@ resource "huaweicloud_vpc_subnet" "eni_subnet" {
 
 #define the security group and the sg rules
 resource "huaweicloud_networking_secgroup" "test" {
-  name                 = format("%s-secgroup-lcy", var.name_prefix)
+  name                 = format("%s-secgroup-terraform", var.name_prefix)
   delete_default_rules = true
 }
 

@@ -26,7 +26,7 @@ resource "huaweicloud_compute_instance" "test" {
   image_id  = data.huaweicloud_images_image.test.id
   flavor_id = data.huaweicloud_compute_flavors.test.ids[0]
 
-  name              = format("%s-ecs-lcy", var.name_prefix)
+  name              = format("%s-ecs-terraform", var.name_prefix)
   admin_pass        = var.admin_password
   availability_zone = var.az_names[0]
   charging_mode     = "postPaid"
@@ -52,7 +52,7 @@ resource "huaweicloud_vpc_eip" "myeip" {
     type = "5_bgp"
   }
   bandwidth {
-    name        = format("%s-ecs-eip-lcy", var.name_prefix)
+    name        = format("%s-ecs-eip-terraform", var.name_prefix)
     size        = 8
     share_type  = "PER"
     charge_mode = "traffic"
