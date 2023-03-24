@@ -60,7 +60,7 @@ resource "huaweicloud_networking_secgroup_rule" "in_v4_elb_member" {
   ethertype         = "IPv4"
   direction         = "ingress"
   protocol          = "tcp"
-  ports             = "8080"
+  ports             = "8080,22"
   remote_ip_prefix  = huaweicloud_vpc.test.cidr
 }
 
