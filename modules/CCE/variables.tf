@@ -1,0 +1,20 @@
+
+variable "image_name" {
+  description = "The name of IMS image within HUAWEI Cloud"
+}
+
+variable "name_prefix" {
+  description = "The name prefix for ECS resources within HUAWEI Cloud"
+}
+
+variable "admin_password" {
+  description = "The password of ECS instance administrator within HUAWEI Cloud"
+}
+
+variable "vpc_id" {
+  description = "The network ID of subnet resource within HUAWEI Cloud"
+}
+
+variable "subnet_id" {
+  description = "The network ID of subnet resource within HUAWEI Cloud"
+}
